@@ -19,8 +19,10 @@ import LogoWhite from "../images/LogoWhite.png"
   for (const child of navbar?.children || []) {
     if (child.tagName === "A" && child.getAttribute("href") == currentPath) {
       child.classList.add('border-white')
+      child.classList.remove('hover:border-text-title')
     } else {
       child.classList.remove('border-white')
+      child.classList.add('hover:border-text-title')
     }
   }
 
