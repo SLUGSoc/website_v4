@@ -1,0 +1,9 @@
+---
+import Calendar from '../components/Calendar.tsx'
+import Layout from '../layouts/Layout.astro'
+---
+<Layout title="Events">
+    <div class="flex justify-center">      
+        <Calendar client:load />
+    </div>
+</Layout>
