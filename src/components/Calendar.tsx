@@ -50,9 +50,9 @@ export default function Calendar() {
                         dayNumber === today.getDate();
 
                     return dayNumber >= 0 ? (
-                        <p key={i} className={`p-10 ${isToday ? 'text-text-title' : 'text-text-body'}`}>{dayNumber + 1}</p>
+                        <p key={i} className={`pb-15 ${isToday ? 'text-text-title' : 'text-text-body'}`}>{dayNumber + 1}</p>
                     ) : (
-                        <p key={i} className="p-10"></p>
+                        <p key={i} className="pb-15"></p>
                     )
                 })}
             </div>
