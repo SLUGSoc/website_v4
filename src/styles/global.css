@@ -2,6 +2,7 @@
 
 @theme {
     --color-bg-main: #1d1d1d;
+    --color-bg-offset: #2e2e2e;
     --color-text-title: #ffc000;
     --color-text-subtitle: #ffe99b;
     --color-text-body: #fff;
