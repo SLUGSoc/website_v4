@@ -16,7 +16,6 @@ import LogoWhite from "../images/LogoWhite.png"
   const navbar = document.getElementById("navbar");
   const currentPath = window.location.pathname;
  
-
   for (const child of navbar?.children || []) {
     if (child.tagName === "A" && child.getAttribute("href") == currentPath) {
       child.classList.add('font-bold')
@@ -26,10 +25,18 @@ import LogoWhite from "../images/LogoWhite.png"
   }
 
   window.addEventListener("scroll", () => {
-  if (window.scrollY > 150) {
-    navbar?.classList.add("bg-bg-main");
-  } else {
-    navbar?.classList.remove("bg-bg-main");
-  }
+    if (window.scrollY > 150) {
+      navbar?.classList.add("bg-bg-main");
+    } else {
+      navbar?.classList.remove("bg-bg-main");
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.scrollY > 150) {
+      navbar?.classList.add("bg-bg-main");
+    } else {
+      navbar?.classList.remove("bg-bg-main");
+    }
   });
 </script>
