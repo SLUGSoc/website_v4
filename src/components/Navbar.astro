@@ -4,21 +4,31 @@ import LogoWhite from "../images/LogoWhite.png"
 ---
 
 <nav id="navbar" class="fixed justify-between flex w-full transition duration-200 items-center">
-    <a href="/" class="mr-auto pl-5 w-30"><Image src={LogoWhite} alt={"Logo for SLUGSOC"} /></a>
-    <a href="/" class="text-text-body p-5">Home</a>
-    <a href="#" class="text-text-body p-5">Events</a>
-    <a href="#" class="text-text-body p-5">Esports</a>
-    <a href="#" class="text-text-body p-5">Contact</a>
+  <a href="/" class="mr-auto pl-5 w-30"><Image src={LogoWhite} alt={"Logo for SLUGSOC"} /></a>
+  <a href="/" class="text-text-body p-5">Home</a>
+  <a href="/events" class="text-text-body p-5">Events</a>
+  <a href="/esports" class="text-text-body p-5">Esports</a>
+  <a href="/contact" class="text-text-body p-5">Contact</a>
 </nav>
 
 <script>
-    const navbar = document.getElementById("navbar");
+  const navbar = document.getElementById("navbar");
+  const currentPath = window.location.pathname;
+ 
 
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 150) {
-        navbar?.classList.add("bg-bg-main");
-      } else {
-        navbar?.classList.remove("bg-bg-main");
-      }
-    });
-  </script>
+  for (const child of navbar?.children || []) {
+    if (child.tagName === "A" && child.getAttribute("href") == currentPath) {
+      child.classList.add('font-bold')
+    } else {
+      child.classList.remove('font-bold')
+    }
+  }
+
+  window.addEventListener("scroll", () => {
+  if (window.scrollY > 150) {
+    navbar?.classList.add("bg-bg-main");
+  } else {
+    navbar?.classList.remove("bg-bg-main");
+  }
+  });
+</script>
