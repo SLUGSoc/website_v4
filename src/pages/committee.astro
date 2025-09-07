@@ -1,0 +1,27 @@
+---
+import CommitteeCard from '../components/CommitteeCard.astro';
+import Layout from '../layouts/Layout.astro'
+import { getCollection } from "astro:content";
+let committees = await getCollection("committees")
+
+let committeeYear;
+let date = new Date();
+
+if (date.getMonth() >= 8) { // This is '8' for September, as JS Date starts at '0' for January
+  committeeYear = new Date().getFullYear();
+} else {
+  committeeYear = new Date().getFullYear() - 1;
+}
+committeeYear = String(committeeYear);
+if ((committees.filter((committee) => committee.id.startsWith(committeeYear))).length > 0) {
+  committees = committees.filter((committee) => committee.id.startsWith(committeeYear));
+} else {
+  committees = committees.filter((committee) => committee.id.startsWith(committeeYear));
+}
+---
+
+<Layout title="Committee">
+  {committees.map(committeeMember => (
+    <CommitteeCard committeeMember={committeeMember} />
+  ))}
+</Layout>
