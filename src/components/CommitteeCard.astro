@@ -5,7 +5,18 @@ const { committeeMember } = Astro.props
 const slug = committeeMember.id.split('/').pop();
 
 ---
-<div>
-{committeeMember.data.name}
-<Image src={"/committee/"+committeeMember.id +".png"} alt={"BEEF"} width={100} height={100} />
+<div class="flex w-3/5 h-1/5 text-text-body bg-bg-offset p-5 rounded-2xl items-center">
+    <Image 
+        src={"/committees/"+committeeMember.id +".png"} 
+        alt={`Image of ${committeeMember.data.name}`} 
+        width={250} 
+        height={250}
+        style={"clip-path: polygon(0% 50%, 25% 10%, 75% 10%, 100% 50%, 75% 90%, 25% 90%)"}
+    />
+    <div class="ml-5">
+        <h1 class="text-4xl text-text-title">{committeeMember.data.name}</h1>
+        <h2 class="text-2xl text-text-subtitle">{committeeMember.data.role}</h2>
+        <p class="text-xl mb-2">Favourite Game: {committeeMember.data.favourite_game}</p>
+        <p>{committeeMember.data.bio}</p>
+    </div>
 </div>
