@@ -5,7 +5,7 @@ const { committeeMember } = Astro.props
 const slug = committeeMember.id.split('/').pop();
 
 ---
-<div class="flex w-3/5 h-1/5 text-text-body bg-bg-offset p-5 rounded-2xl items-center">
+<div class="flex w-3/5 h-1/5 text-text-body bg-bg-offset p-5 rounded-2xl items-center shadow-2xl shadow-zinc-850">
     <Image 
         src={"/committees/"+committeeMember.id +".png"} 
         alt={`Image of ${committeeMember.data.name}`} 
