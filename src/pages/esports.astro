@@ -1,0 +1,13 @@
+---
+import EsportCard from '../components/EsportCard.astro';
+import Layout from '../layouts/Layout.astro'
+import { getCollection } from "astro:content";
+let esports = await getCollection("esports")
+---
+<Layout title="Esports">
+    <div class="p-10 grid grid-cols-3 gap-5">
+        {esports.map(esport => (
+            <EsportCard esport={esport} />
+        ))}
+    </div>
+</Layout>

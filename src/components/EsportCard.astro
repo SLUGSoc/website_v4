@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets";
+
+const { esport } = Astro.props;
+
+const colour = esport.data.colour;
+---
+<a href={esport.data.discord}>
+  <div style={`background-color: ${colour}`} class="w-fit h-fit">
+    <Image src={"/esports/"+esport.id +".png"} alt={"BEEF"} width={500} height={500} />
+  </div>
+</a>
