@@ -1,0 +1,11 @@
+---
+import { Image } from "astro:assets";
+
+const { committeeMember } = Astro.props
+const slug = committeeMember.id.split('/').pop();
+
+---
+<div>
+{committeeMember.data.name}
+<Image src={"/committee/"+committeeMember.id +".png"} alt={"BEEF"} width={100} height={100} />
+</div>
