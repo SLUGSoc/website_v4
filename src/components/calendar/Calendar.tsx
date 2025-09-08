@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CalendarEvent from "./CalendarEvent.tsx";
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
@@ -61,13 +62,15 @@ export default function Calendar({ events } : { events: [] }) {
                     });
 
                     return (
-                        <div key={i} className={`flex flex-col h-[150px] pb-15 rounded-2xl ${dayNumber > 0  && dayNumber < (getDaysInMonth(currentDate) + 1) ? 'border-bg-offset bg-bg-offset ' : 'border-zinc-800 bg-zinc-800'}`}>
+                        <div key={i} className={`flex flex-col items-center h-[150px] pb-15 rounded-2xl ${dayNumber > 0  && dayNumber < (getDaysInMonth(currentDate) + 1) ? 'border-bg-offset bg-bg-offset ' : 'border-zinc-800 bg-zinc-800'}`}>
                             <p className={`mt-2 text-lg font-bold ${isToday ? 'text-text-title' : 'text-text-body'}`}>
                                 {dayNumber > 0 && dayNumber < (getDaysInMonth(currentDate) + 1) && dayNumber}
                             </p>
-                            {dayEvents.map(event => (
-                                <p key={event}>{event.name}</p>
-                            ))}
+                            <div className="w-4/5">
+                                {dayEvents.map(event => (
+                                    <p key={event}><CalendarEvent event={event} /></p>
+                                ))}
+                            </div>
                         </div>
                     )
                 })}
