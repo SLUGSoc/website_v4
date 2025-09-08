@@ -37,22 +37,24 @@ export default function Calendar() {
                 <p>{currentDate.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}</p>
                 <button onClick={nextMonth} className="cursor-pointer">&gt;</button>
             </div>
-            <div id="calendarBody" className="grid grid-cols-7 mt-5 text-center">
+            <div id="calendarBody" className="grid h-full grid-cols-7 mt-5 text-center">
                 {days.map(day => (
                     <p key={day} className="text-xl mb-2">{day}</p>
                 ))}
                 {[...Array(getDaysInMonth(currentDate) + getStartDay(currentDate))].map((_, i) => {
-                    let dayNumber = i - getStartDay(currentDate);
+                    let dayNumber = i - getStartDay(currentDate) + 1;
 
                     const isToday =
                         currentDate.getMonth() === today.getMonth() &&
                         currentDate.getFullYear() === today.getFullYear() &&
                         dayNumber === today.getDate();
 
-                    return dayNumber >= 0 ? (
-                        <p key={i} className={`pb-15 ${isToday ? 'text-text-title' : 'text-text-body'}`}>{dayNumber + 1}</p>
+                    return dayNumber > 0 ? (
+                        <div key={i} className={`pb-15 ${isToday ? 'text-text-title' : 'text-text-body'}`}>
+                            {dayNumber}
+                        </div>
                     ) : (
-                        <p key={i} className="pb-15"></p>
+                        <div key={i} className="pb-15"></div>
                     )
                 })}
             </div>
