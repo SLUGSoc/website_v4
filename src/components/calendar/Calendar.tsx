@@ -79,7 +79,9 @@ export default function Calendar({ events } : { events: [] }) {
                         const eventStart = new Date(event["startDate"]); 
                         const eventEnd = new Date(event["endDate"]);
 
-                        if (datesAreEqual(day, startOfDay(eventStart))) {
+                        if (datesAreEqual(day, startOfDay(eventStart)) && datesAreEqual(day, startOfDay(eventEnd))) {
+                            return { event, position: 'single'}
+                        } else if (datesAreEqual(day, startOfDay(eventStart))) {
                             return { event, position: 'start' };
                         } else if (datesAreEqual(day, startOfDay(eventEnd))) {
                             return { event, position: 'end' };
@@ -92,13 +94,13 @@ export default function Calendar({ events } : { events: [] }) {
 
                     return (
                         <div key={i} className={`flex flex-col items-center h-[150px] pb-15 rounded-2xl ${dayNumber > 0  && dayNumber < (getDaysInMonth(currentDate) + 1) ? 'border-bg-offset bg-bg-offset ' : 'border-zinc-800 bg-zinc-800'}`}>
-                            <p className={`mt-2  text-lg font-bold ${isToday ? 'text-text-title' : 'text-text-body'}`}>
+                            <p className={`mt-2 text-lg font-bold ${isToday ? 'text-text-title' : 'text-text-body'}`}>
                                 {dayNumber > 0 && dayNumber < (getDaysInMonth(currentDate) + 1) && dayNumber}
                             </p>
-                            <div className="w-4/5">
+                            <div className="flex flex-col items-center w-full">
                                 {dayNumber > 0 && dayNumber < (getDaysInMonth(currentDate) + 1) &&
                                     dayEvents.map(({ event, position }) => (
-                                        <p key={event}><CalendarEvent event={event} position={position} /></p>
+                                    <CalendarEvent key={event} event={event} position={position} />
                                     )
                                 )}
                             </div>
