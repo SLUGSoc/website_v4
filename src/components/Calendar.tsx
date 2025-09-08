@@ -26,9 +26,9 @@ export default function Calendar({ events } : { events: [] }) {
         setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth() + 1));
     }
 
-    
+    console.log(getStartDay(currentDate))
     return (
-        <div className="text-text-body w-4/5">
+        <div className="text-text-body w-4/5 h-full mb-10">
             <div id="calendarControls" className="text-4xl flex justify-between">
                 <div className="flex align-middle">
                     <button onClick={prevMonth} className="cursor-pointer">&lt;</button>
@@ -41,7 +41,7 @@ export default function Calendar({ events } : { events: [] }) {
                 {days.map(day => (
                     <p key={day} className="text-xl mb-2">{day}</p>
                 ))}
-                {[...Array(35)].map((_, i) => {
+                {[...Array(getStartDay(currentDate) > 4 && getDaysInMonth(currentDate) >= 30 ? 42 : 35)].map((_, i) => {
                     const dayNumber = i - getStartDay(currentDate) + 1;
 
                     const isToday =
@@ -61,9 +61,9 @@ export default function Calendar({ events } : { events: [] }) {
                     });
 
                     return (
-                        <div key={i} className={`flex flex-col h-[150px] pb-15 rounded-2xl ${dayNumber > 0  && dayNumber < (getDaysInMonth(currentDate) + getStartDay(currentDate)) ? 'border-bg-offset bg-bg-offset ' : 'border-zinc-800 bg-zinc-800'}`}>
+                        <div key={i} className={`flex flex-col h-[150px] pb-15 rounded-2xl ${dayNumber > 0  && dayNumber < (getDaysInMonth(currentDate) + 1) ? 'border-bg-offset bg-bg-offset ' : 'border-zinc-800 bg-zinc-800'}`}>
                             <p className={`mt-2 text-lg font-bold ${isToday ? 'text-text-title' : 'text-text-body'}`}>
-                                {dayNumber > 0 && dayNumber < (getDaysInMonth(currentDate) + getStartDay(currentDate)) && dayNumber}
+                                {dayNumber > 0 && dayNumber < (getDaysInMonth(currentDate) + 1) && dayNumber}
                             </p>
                             {dayEvents.map(event => (
                                 <p key={event}>{event.name}</p>
