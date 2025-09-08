@@ -37,11 +37,11 @@ export default function Calendar({ events } : { events: [] }) {
                 <p>{currentDate.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}</p>
                 <button onClick={nextMonth} className="cursor-pointer">&gt;</button>
             </div>
-            <div id="calendarBody" className="grid h-full grid-cols-7 mt-5 text-center">
+            <div id="calendarBody" className="grid h-full grid-cols-7 mt-5 text-center gap-2">
                 {days.map(day => (
                     <p key={day} className="text-xl mb-2">{day}</p>
                 ))}
-                {[...Array(getDaysInMonth(currentDate) + getStartDay(currentDate))].map((_, i) => {
+                {[...Array(35)].map((_, i) => {
                     const dayNumber = i - getStartDay(currentDate) + 1;
 
                     const isToday =
@@ -61,9 +61,9 @@ export default function Calendar({ events } : { events: [] }) {
                     });
 
                     return (
-                        <div key={i} className={`flex flex-col h-[150px] pb-15`}>
-                            <p className={`${isToday ? 'text-text-title' : 'text-text-body'}`}>
-                                {dayNumber > 0 && dayNumber}
+                        <div key={i} className={`flex flex-col h-[150px] pb-15 rounded-2xl ${dayNumber > 0  && dayNumber < (getDaysInMonth(currentDate) + getStartDay(currentDate)) ? 'border-bg-offset bg-bg-offset ' : 'border-zinc-800 bg-zinc-800'}`}>
+                            <p className={`mt-2 text-lg font-bold ${isToday ? 'text-text-title' : 'text-text-body'}`}>
+                                {dayNumber > 0 && dayNumber < (getDaysInMonth(currentDate) + getStartDay(currentDate)) && dayNumber}
                             </p>
                             {dayEvents.map(event => (
                                 <p key={event}>{event.name}</p>
