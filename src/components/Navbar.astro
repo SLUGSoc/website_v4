@@ -3,8 +3,8 @@ import Image from "astro/components/Image.astro"
 import LogoWhite from "../images/LogoWhite.png"
 ---
 
-<nav id="navbar" class="fixed justify-between flex w-full transition duration-200 items-center">
-  <a href="/" class="mr-auto pl-5 w-30"><Image src={LogoWhite} alt={"Logo for SLUGSOC"} /></a>
+<nav id="navbar" class="fixed justify-between max-md:justify-center flex w-full transition duration-200 items-center z-100">
+  <a href="/" class="mr-auto pl-5 w-30 max-md:hidden"><Image src={LogoWhite} alt={"Logo for SLUGSOC"} /></a>
   <a href="/" class="text-text-body p-5 border-b-3 border-transparent hover:border-text-title transition duration-300">Home</a>
   <a href="/events" class="text-text-body p-5 border-b-3 border-transparent hover:border-text-title transition duration-300">Events</a>
   <a href="/esports" class="text-text-body p-5 border-b-3 border-transparent hover:border-text-title transition duration-300">Esports</a>
