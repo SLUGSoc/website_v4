@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-export default function Calendar() {
+export default function Calendar({ events } : { events: [] }) {
     const today = new Date()
     const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -42,19 +42,33 @@ export default function Calendar() {
                     <p key={day} className="text-xl mb-2">{day}</p>
                 ))}
                 {[...Array(getDaysInMonth(currentDate) + getStartDay(currentDate))].map((_, i) => {
-                    let dayNumber = i - getStartDay(currentDate) + 1;
+                    const dayNumber = i - getStartDay(currentDate) + 1;
 
                     const isToday =
                         currentDate.getMonth() === today.getMonth() &&
                         currentDate.getFullYear() === today.getFullYear() &&
                         dayNumber === today.getDate();
 
-                    return dayNumber > 0 ? (
-                        <div key={i} className={`pb-15 ${isToday ? 'text-text-title' : 'text-text-body'}`}>
-                            {dayNumber}
+                    const dayEvents = events.filter(event => {
+                        const day = new Date(new Date(currentDate).setDate(dayNumber))
+                        const eventDate = new Date(event["startDate"]);
+
+                        return (
+                            eventDate.getDate() === day.getDate() &&
+                            eventDate.getMonth() === day.getMonth() &&
+                            eventDate.getFullYear() === day.getFullYear()
+                        );
+                    });
+
+                    return (
+                        <div key={i} className={`flex flex-col h-[150px] pb-15`}>
+                            <p className={`${isToday ? 'text-text-title' : 'text-text-body'}`}>
+                                {dayNumber > 0 && dayNumber}
+                            </p>
+                            {dayEvents.map(event => (
+                                <p key={event}>{event.name}</p>
+                            ))}
                         </div>
-                    ) : (
-                        <div key={i} className="pb-15"></div>
                     )
                 })}
             </div>
