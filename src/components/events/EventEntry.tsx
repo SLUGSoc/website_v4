@@ -27,7 +27,16 @@ export default function EventEntry({ event } : { event: EVENT }) {
 
     return (
         <div className="bg-bg-offset border-2 border-bg-offset rounded-xl p-5 mt-5">
-            <h1 className="text-xl">{event.name}</h1>
+            <div className="flex justify-between items-center mb-2">
+                <h1 className="text-xl">{event.name}</h1>
+                <p 
+                className={`
+                    border min-w-fit w-20 text-center rounded-xl border-transparent
+                    ${event.status ?? 'bg-amber-500'}
+                    ${event.status == 'cancelled' ? 'bg-red-500' : ''}
+                    ${event.status == 'scheduled' ? 'bg-green-500' : ''}
+                `}>{event.status ?? 'postponed'}</p>
+            </div>
             <p className="text-lg">{formatDates(event)}</p>
             <p>{event.description}</p>
         </div>
