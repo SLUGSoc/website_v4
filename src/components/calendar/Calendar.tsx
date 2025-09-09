@@ -93,7 +93,7 @@ export default function Calendar({ events } : { events: [] }) {
                         }).filter(Boolean);
 
                     return (
-                        <div key={i} className={`flex flex-col items-center h-[150px] pb-15 rounded-2xl ${dayNumber > 0  && dayNumber < (getDaysInMonth(currentDate) + 1) ? 'border-bg-offset bg-bg-offset ' : 'border-zinc-800 bg-zinc-800'}`}>
+                        <div key={i} className={`flex flex-col items-center min-h-[150px] pb-15 rounded-2xl ${dayNumber > 0  && dayNumber < (getDaysInMonth(currentDate) + 1) ? 'border-bg-offset bg-bg-offset ' : 'border-zinc-800 bg-zinc-800'}`}>
                             <p className={`mt-2 text-lg font-bold ${isToday ? 'text-text-title' : 'text-text-body'}`}>
                                 {dayNumber > 0 && dayNumber < (getDaysInMonth(currentDate) + 1) && dayNumber}
                             </p>
