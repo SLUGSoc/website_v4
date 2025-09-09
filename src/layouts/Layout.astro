@@ -12,10 +12,10 @@ const { title, subtitle } = Astro.props
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body class="m-0">
+  <body class="m-0 flex flex-col min-h-screen ">
     <Navbar />
     <Title title={title} subtitle={subtitle} />
-    <article class="min-h-screen">
+    <article class="grow">
       <slot />
     </article>
     <Footer />
