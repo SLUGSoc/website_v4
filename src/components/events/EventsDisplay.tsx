@@ -24,8 +24,8 @@ export default function EventsDisplay({ events }: { events: EVENT[] }){
     upcomingEvents.sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
 
     return (
-        <div className="text-white flex w-3/5 justify-between">
-            <div id="upcoming">
+        <div className="text-white flex xl:w-3/5 min-2xl:w-2/5 justify-between max-md:flex-col max-lg:w-4/5">
+            <div id="upcoming" className="max-md:mb-10 md:mr-5">
                 <h1 className="text-4xl">Upcoming Events</h1>
                 {upcomingEvents.length > 0 && upcomingEvents.map(event => (
                     <EventEntry key={event} event={event} />
