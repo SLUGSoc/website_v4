@@ -16,4 +16,8 @@ export interface EVENT {
     name: string,
     startDate: Date,
     endDate: Date,
+
+    location: string,
+    description: string,
+    status: string
 }
