@@ -1,16 +1,9 @@
 ---
-
+import ImageGrid from '../components/ImageGrid.astro'
+import Layout from '../layouts/Layout.astro'
+import Image1 from '../images/Logo.png';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="slugsoc" subtitle="university of sheffield gaming society">
+	<ImageGrid leftSide image1={Image1} image2={Image1} image3={Image1} />
+	<ImageGrid image1={Image1} image2={Image1} image3={Image1} />
+</Layout>
