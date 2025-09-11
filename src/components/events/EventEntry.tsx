@@ -1,7 +1,7 @@
 import { FaLocationDot } from "react-icons/fa6";
 import type { EVENT } from "../../constants/interfaces";
 
-export default function EventEntry({ event } : { event: EVENT }) {
+export default function EventEntry({ event, finished } : { event: EVENT, finished: boolean }) {
 
     function formatDates(event: EVENT) {
         if (event.startDate.getDate() == event.endDate.getDate() &&
@@ -44,7 +44,8 @@ export default function EventEntry({ event } : { event: EVENT }) {
                     ${event.status ?? 'bg-amber-500'}
                     ${event.status == 'cancelled' ? 'bg-red-500' : ''}
                     ${event.status == 'scheduled' ? 'bg-green-500' : ''}
-                `}>{event.status ?? 'postponed'}</p>
+                    ${finished != undefined ? 'bg-zinc-600' : ''}
+                `}>{finished === undefined ? (event.status ?? 'postponed') : 'completed'}</p>
             </div>
             <p className="text-lg">{formatDates(event)}</p>
             <p>{event.description}</p>

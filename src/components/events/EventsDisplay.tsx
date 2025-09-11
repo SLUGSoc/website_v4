@@ -45,7 +45,7 @@ export default function EventsDisplay({ events }: { events: EVENT[] }){
                 <div id="past" className="mt-10">
                     <h1 className="text-4xl">Past Events</h1>
                     {pastEvents.length > 0 && pastEvents.map(event => (
-                        <EventEntry key={event} event={event} />
+                        <EventEntry key={event} event={event} finished={true} />
                     ))}
                     {pastEvents.length == 0 && <p className="text-xl mt-5">No past events!</p>}
                 </div>
