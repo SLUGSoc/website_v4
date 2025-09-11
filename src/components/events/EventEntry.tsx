@@ -1,3 +1,4 @@
+import { FaLocationDot } from "react-icons/fa6";
 import type { EVENT } from "../../constants/interfaces";
 
 export default function EventEntry({ event } : { event: EVENT }) {
@@ -28,7 +29,15 @@ export default function EventEntry({ event } : { event: EVENT }) {
     return (
         <div className="bg-bg-offset border-2 border-bg-offset rounded-xl p-5 mt-5">
             <div className="flex justify-between items-center mb-2">
-                <h1 className="text-xl">{event.name}</h1>
+                <div>
+                    <h1 className="text-2xl">{event.name}</h1>
+                    {event.location && 
+                    <div className="flex flex-row items-center">
+                        <h3 className=" text-lg">{event.location}</h3>
+                        <FaLocationDot className="mb-1 ml-1" />
+                    </div>    
+                    }
+                </div>
                 <p 
                 className={`
                     border min-w-fit w-20 text-center rounded-xl border-transparent
