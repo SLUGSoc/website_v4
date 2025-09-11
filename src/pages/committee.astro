@@ -5,12 +5,12 @@ import { getCollection } from "astro:content";
 let committees = await getCollection("committees")
 
 let committeeYear;
-let date = new Date();
+let date =  new Date();
 
 if (date.getMonth() >= 8) { // This is '8' for September, as JS Date starts at '0' for January
-  committeeYear = new Date().getFullYear();
+  committeeYear = date.getFullYear();
 } else {
-  committeeYear = new Date().getFullYear() - 1;
+  committeeYear = date.getFullYear() - 1;
 }
 committeeYear = String(committeeYear);
 if ((committees.filter((committee) => committee.id.startsWith(committeeYear))).length > 0) {
@@ -20,7 +20,7 @@ if ((committees.filter((committee) => committee.id.startsWith(committeeYear))).l
 }
 ---
 
-<Layout title="Committee">
+<Layout title="Committee" subtitle={"Your " + committeeYear + " Committee"}>
   <div class="flex justify-center">
     {committees.map(committeeMember => (
       <CommitteeCard committeeMember={committeeMember} />
