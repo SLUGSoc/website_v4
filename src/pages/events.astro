@@ -1,36 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import EventsDisplay from '../components/events/EventsDisplay'
+import type { EVENT } from '../constants/interfaces'
 
-let events = [
+let events: EVENT[] = [
     {
-        "name": "Fortnite",
-        "startDate": new Date(2025, 12, 9),
-        "endDate": new Date(new Date(2025, 13, 9)),
-        "description": "Fortnite",
-        "status": "scheduled"
-    },
-    {
-        "name": "Fortnite2",
-        "startDate": new Date(2025, 12, 12),
-        "endDate": new Date(new Date(2025, 15, 9)),
-        "description": "Fortnite"
+        "name": "LAN 88",
+        "startDate": new Date(2026, 0, 9),
+        "endDate": new Date(new Date(2026, 0, 11)),
+        "description": "Join us for a weekend of Gaming, Quizzes, and Competitions!",
+        "status": "scheduled",
+        "location": "The EDGE"
     },
     {
         "name": "Test2",
+        "startDate": new Date(2025, 12, 12),
+        "endDate": new Date(new Date(2025, 15, 9)),
+        "status": "scheduled",
+        "description": "Fortnite",
+        "location": "The EDGE"
+    },
+    {
+        "name": "Charity Game Week",
         "startDate": new Date(2025, 8, 9),
         "endDate": new Date(new Date(2025, 8, 17)),
-        "status": 'cancelled'
+        "status": "scheduled",
+        "location": "students Union",
+        "description": "Charity"
     },
     {
         "name": "Test3",
         "startDate": new Date(2025, 8, 9, 12, 0, 0),
         "endDate": new Date(2025, 8, 9, 17, 0, 0),
+        "status": "Cancelled",
+        "description": "Test3",
+        "location": "FirePit"
     },
     {
         "name": "Test4",
         "startDate": new Date(2025, 8, 8, 12, 0, 0),
         "endDate": new Date(2025, 8, 8, 17, 0, 0),
+        "status": "cancelled",
+        "description": "Test3",
+        "location": "FirePit"
     }
 ]
 ---
