@@ -6,12 +6,18 @@ const slug = committeeMember.id.split('/').pop();
 
 ---
 <div class="flex w-3/5 max-md:w-4/5 h-1/5 max-md:flex-col text-text-body bg-bg-offset p-5 rounded-2xl items-center shadow-2xl shadow-zinc-850">
-    <Image 
-        src={"/committees/"+committeeMember.id +".png"} 
-        alt={`${committeeMember.data.name}`} 
-        width={250} 
+    <Image
+        src={`/committees/${committeeMember.id}.png`}
+        alt={committeeMember.data.name}
+        width={250}
         height={250}
-        style={"clip-path: polygon(0% 50%, 25% 10%, 75% 10%, 100% 50%, 75% 90%, 25% 90%)"}
+        style={{
+            width: '250px',
+            height: '250px',
+            objectFit: 'cover',
+            display: 'block',
+            clipPath: 'polygon(0% 50%, 25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%)',
+        }}
     />
     <div class="ml-5">
         <h1 class="text-4xl text-text-title">{committeeMember.data.name}</h1>
