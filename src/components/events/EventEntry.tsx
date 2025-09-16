@@ -30,7 +30,7 @@ export default function EventEntry({ event, finished } : { event: EVENT, finishe
         <div className="bg-bg-offset border-2 border-bg-offset rounded-xl p-5 mt-5">
             <div className="flex justify-between items-center mb-2">
                 <div>
-                    <h1 className="text-2xl">{event.name}</h1>
+                    <h1 className="text-2xl">{event.title}</h1>
                     {event.location && 
                     <div className="flex flex-row items-center">
                         <h3 className=" text-lg">{event.location}</h3>
