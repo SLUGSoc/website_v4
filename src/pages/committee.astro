@@ -18,6 +18,9 @@ if ((committees.filter((committee) => committee.id.startsWith(committeeYear))).l
 } else {
   committees = committees.filter((committee) => committee.id.startsWith(committeeYear));
 }
+
+committees.sort((a, b) => a.data.importance - b.data.importance);
+
 ---
 
 <Layout title="Committee" subtitle={"Your " + committeeYear + " Committee"}>
