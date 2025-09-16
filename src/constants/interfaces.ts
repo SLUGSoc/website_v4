@@ -13,7 +13,8 @@ export interface ESPORT {
 }
 
 export interface EVENT {
-    name: string,
+    id: string
+    title: string,
     startDate: Date,
     endDate: Date,
 
