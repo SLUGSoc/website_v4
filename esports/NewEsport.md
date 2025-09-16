@@ -1,4 +1,4 @@
-In order to add a esport, follow the steps below:
+In order to add an esport, follow the steps below:
 
 1. Create a new folder in the format of: `<esport_name>` (i.e minecraft/) - ensuring that the text is lowercaser, and that any spaces (i.e overwatch 2) are replaced with underscores _ (overwatch_2)
 2. Within this folder add new markdown (.md) files, with the __*name*__ of the esport (i.e minecraft.md),<br/> 
