@@ -64,7 +64,7 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
                             <EventEntry key={event.id} event={event} category={"upcoming"} />
                         ))
                         ) : (
-                            <p className="text-xl min-md:mt-5">
+                            <p className="text-xl min-md:mt-5 max-md:hidden">
                             No upcoming events!<br />
                             Check back soon!
                             </p>
@@ -80,7 +80,7 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
                                     <EventEntry key={event.id} event={event} category={"ongoing"} />
                                 ))
                                 ) : (
-                                    <p className="text-xl min-md:mt-5">No ongoing events!</p>
+                                    <p className="text-xl min-md:mt-5 max-md:hidden">No ongoing events!</p>
                                 )
                             }
                         </div>
@@ -91,7 +91,7 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
                                     <EventEntry key={event.id} event={event} category={"completed"} />
                                 ))
                                 ) : (
-                                    <p className="text-xl min-md:mt-5">No past events!</p>
+                                    <p className="text-xl min-md:mt-5 max-md:hidden">No past events!</p>
                                 )
                             }
                         </div>
