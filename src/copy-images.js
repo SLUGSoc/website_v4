@@ -5,16 +5,18 @@ function copyContents(src, dest) {
   const stats = fs.statSync(src);
 
   if (stats.isDirectory()) {
-    fs.mkdirSync(dest, { recursive: true });
+    const destDir = path.join(path.dirname(dest), path.basename(dest).toLowerCase());
+    fs.mkdirSync(destDir, { recursive: true });
 
     fs.readdirSync(src).forEach((item) => {
       const srcItem = path.join(src, item);
-      const destItem = path.join(dest, item);
+      const destItem = path.join(destDir, item.toLowerCase());
       copyContents(srcItem, destItem);
     });
   } else if (stats.isFile() && path.extname(src).toLowerCase() === '.png') {
-    fs.copyFileSync(src, dest);
-    console.log(`Copied: ${src} → ${dest}`);
+    const destFile = path.join(path.dirname(dest), path.basename(dest).toLowerCase());
+    fs.copyFileSync(src, destFile);
+    console.log(`Copied: ${src} → ${destFile}`);
   }
 }
 
