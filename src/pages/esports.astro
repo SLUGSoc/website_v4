@@ -3,7 +3,7 @@ import EsportCard from '../components/EsportCard.astro';
 import Layout from '../layouts/Layout.astro'
 import { getCollection } from "astro:content";
 let esports = await getCollection("esports")
-esports = esports.filter(esport => esport.id != "esports")
+esports = esports.filter(esport => esport.id != "newesport") // <-- Change this if you rename the New Esport guide
 ---
 <Layout title="Esports">
     <div class="flex w-full h-full justify-center">
