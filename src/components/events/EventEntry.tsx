@@ -38,14 +38,14 @@ export default function EventEntry({ event, finished } : { event: EVENT, finishe
                     </div>    
                     }
                 </div>
-                <p 
+                {/* <p 
                 className={`
                     border min-w-fit w-20 text-center rounded-xl border-transparent
                     ${event.status == "" || event.status == "postponed" ? 'bg-amber-500' : ''}
                     ${event.status == 'cancelled' ? 'bg-red-500' : ''}
                     ${event.status == 'scheduled' ? 'bg-green-500' : ''}
-                    ${finished != undefined ? 'bg-zinc-600' : ''}
-                `}>{finished === undefined ? ((event.status || event.status == "") ?? 'postponed') : 'completed'}</p>
+                    ${(finished === undefined || finished === false) ? '' : 'bg-zinc-600'}
+                `}>{(finished === undefined || finished === false) ? ((event.status || event.status == "") ?? 'postponed') : 'completed'}</p> */}
             </div>
             <p className="text-lg">{formatDates(event)}</p>
             <p>{event.description}</p>
