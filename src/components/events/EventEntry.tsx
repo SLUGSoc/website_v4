@@ -1,7 +1,7 @@
 import { FaLocationDot } from "react-icons/fa6";
 import type { EVENT } from "../../constants/interfaces";
 
-export default function EventEntry({ event, finished } : { event: EVENT, finished: boolean }) {
+export default function EventEntry({ event, category } : { event: EVENT, category: string }) {
 
     function formatDates(event: EVENT) {
         if (event.startDate.getDate() == event.endDate.getDate() &&
@@ -38,14 +38,14 @@ export default function EventEntry({ event, finished } : { event: EVENT, finishe
                     </div>    
                     }
                 </div>
-                {/* <p 
+                <p 
                 className={`
-                    border min-w-fit w-20 text-center rounded-xl border-transparent
-                    ${event.status == "" || event.status == "postponed" ? 'bg-amber-500' : ''}
-                    ${event.status == 'cancelled' ? 'bg-red-500' : ''}
-                    ${event.status == 'scheduled' ? 'bg-green-500' : ''}
-                    ${(finished === undefined || finished === false) ? '' : 'bg-zinc-600'}
-                `}>{(finished === undefined || finished === false) ? ((event.status || event.status == "") ?? 'postponed') : 'completed'}</p> */}
+                    border ml-5 min-w-fit min-md:pt-1 w-20 text-center rounded-xl border-transparent
+                    ${category.toLowerCase() == "upcoming" ? 'bg-green-500' : ''}
+                    ${category == "ongoing" ? 'bg-amber-500' : ''}
+                    ${category == "completed" ? 'bg-zinc-600' : ''}
+                    min-md:hidden
+                `}>{category}</p>
             </div>
             <p className="text-lg">{formatDates(event)}</p>
             <p>{event.description}</p>
