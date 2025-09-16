@@ -47,9 +47,13 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
 
     return (
         <>
-            {loading && <p className="text-white">Loading</p>}
+            {loading && 
+                <div className="flex flex-col items-center text-center">
+                    <span className="mt-5 w-16 h-16 border-6 border-text-body border-b-transparent rounded-full inline-block animate-spin"></span>
+                </div>
+            }
 
-            {!loading && error && <p className="text-white">Error</p>}
+            {!loading && error && <p className="text-3xl text-red-400">Error loading Events - Please try again</p>}
 
             {!loading && !error && 
                 <div className="text-white flex xl:w-3/5 min-2xl:w-2/5 justify-between max-md:flex-col max-lg:w-4/5">
