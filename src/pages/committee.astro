@@ -22,8 +22,15 @@ if ((committees.filter((committee) => committee.id.startsWith(committeeYear))).l
 
 <Layout title="Committee" subtitle={"Your " + committeeYear + " Committee"}>
   <div class="flex justify-center">
-    {committees.map(committeeMember => (
-      <CommitteeCard committeeMember={committeeMember} />
-    ))}
+    {committees.length > 0 ? 
+      committees.map(committeeMember => (<CommitteeCard committeeMember={committeeMember} />)) 
+      : 
+      (
+        <div class="text-text-body text-3xl text-center">
+          <p>No Committee Yet!</p>
+          <p>Check Back Soon!</p>
+        </div>
+      )
+    }
   </div>
 </Layout>
