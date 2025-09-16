@@ -1,55 +1,99 @@
+import { useEffect, useState } from "react";
 import type { EVENT } from "../../constants/interfaces";
 import EventEntry from "./EventEntry";
 
-export default function EventsDisplay({ events }: { events: EVENT[] }){
-    const currentDate = new Date()
+export default function EventsDisplay({ macroURL } : { macroURL: string}) {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [events, setEvents] = useState<EVENT[]>([]);
 
-    let upcomingEvents: EVENT[] = [];
-    let ongoingEvents: EVENT[] = [];
-    let pastEvents: EVENT[] = [];
+    const currentDate = new Date();
 
-    events.filter(event => {
-        const startDate = event["startDate"];
-        const endDate = event["endDate"];
-        
-        if (startDate > currentDate) {
-            upcomingEvents.push(event);
-        } else if (endDate < currentDate) {
-            pastEvents.push(event);
-        } else {
-            ongoingEvents.push(event)
+    useEffect(() => {
+        async function fetchEvents() {
+            try {
+                setLoading(true);
+                const res = await fetch(macroURL);
+                const data = await res.json();
+
+                data.forEach((event: EVENT ) => {
+                    event.startDate = new Date(event.startDate);
+                    event.endDate = new Date(event.endDate);
+                });
+
+                setEvents(data);
+            } catch (e) {
+                console.log("Failed to fetch events:", e);
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
         }
-    });
 
-    upcomingEvents.sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
+        fetchEvents();
+    }, []);
+
+
+    const upcomingEvents = events.filter((event) => new Date(event.startDate) > currentDate);
+    const ongoingEvents = events.filter((event) =>
+        new Date(event.startDate) <= currentDate &&
+        new Date(event.endDate) >= currentDate
+    );
+    const pastEvents = events.filter((event) => new Date(event.endDate) < currentDate);
+
+
+    upcomingEvents.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
+
 
     return (
-        <div className="text-white flex xl:w-3/5 min-2xl:w-2/5 justify-between max-md:flex-col max-lg:w-4/5">
-            <div id="upcoming" className="max-md:mb-10 md:mr-5">
-                <h1 className="text-4xl">Upcoming Events</h1>
-                {upcomingEvents.length > 0 && upcomingEvents.map(event => (
-                    <EventEntry key={event} event={event} />
-                ))}
-                {upcomingEvents.length == 0 && <p className="text-xl mt-5">No upcoming events!<br/>Check back soon!</p>}
-            </div>
+        <>
+            {loading && <p className="text-white">Loading</p>}
 
-            <div className="flex flex-col">
-                <div id="ongoing">
-                    <h1 className="text-4xl">Ongoing Events</h1>
-                    {ongoingEvents.length > 0 &&  ongoingEvents.map(event => (
-                        <EventEntry key={event} event={event} />
-                    ))}
-                    {ongoingEvents.length == 0 && <p className="text-xl mt-5">No ongoing events!</p>}
+            {!loading && error && <p className="text-white">Error</p>}
 
+            {!loading && !error && 
+                <div className="text-white flex xl:w-3/5 min-2xl:w-2/5 justify-between max-md:flex-col max-lg:w-4/5">
+                    <div id="upcoming" className="max-md:mb-10 md:mr-5">
+                    <h1 className="text-4xl">Upcoming Events</h1>
+                    {upcomingEvents.length > 0 ? (
+                        upcomingEvents.map((event) => (
+                            <EventEntry key={event.id} event={event} finished={false} />
+                        ))
+                        ) : (
+                            <p className="text-xl mt-5">
+                            No upcoming events!<br />
+                            Check back soon!
+                            </p>
+                        )
+                    }
+                    </div>
+
+                    <div className="flex flex-col">
+                        <div id="ongoing">
+                            <h1 className="text-4xl">Ongoing Events</h1>
+                            {ongoingEvents.length > 0 ? (
+                                ongoingEvents.map((event) => (
+                                    <EventEntry key={event.id} event={event} finished={false} />
+                                ))
+                                ) : (
+                                    <p className="text-xl mt-5">No ongoing events!</p>
+                                )
+                            }
+                        </div>
+                        <div id="past" className="mt-10">
+                            <h1 className="text-4xl">Past Events</h1>
+                            {pastEvents.length > 0 ? (
+                                pastEvents.map((event) => (
+                                    <EventEntry key={event.id} event={event} finished={true} />
+                                ))
+                                ) : (
+                                    <p className="text-xl mt-5">No past events!</p>
+                                )
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div id="past" className="mt-10">
-                    <h1 className="text-4xl">Past Events</h1>
-                    {pastEvents.length > 0 && pastEvents.map(event => (
-                        <EventEntry key={event} event={event} finished={true} />
-                    ))}
-                    {pastEvents.length == 0 && <p className="text-xl mt-5">No past events!</p>}
-                </div>
-            </div>
-        </div>
-    )
+            }
+        </>
+    );
 }
