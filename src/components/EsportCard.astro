@@ -7,6 +7,6 @@ const colour = esport.data.colour;
 ---
 <a href={esport.data.discord} class="w-fit h-fit">
   <div style={`background-color: ${colour}`} class="min-lg:w-[300px] min-lg:h-[300px] max-lg:w-[350px] max-lg:h-[350px] rounded-xs hover:-translate-y-3 hover:shadow-2xl transition duration-150 shadow-lg">
-    <Image src={"/esports/"+esport.id +".png"} alt={"BEEF"} width={225} height={200} class="object-contain w-full h-full p-5" />
+    <Image src={"/esports/"+esport.id +".png"} alt={esport.id.split("/")[-1]} width={225} height={200} class="object-contain w-full h-full p-5" />
   </div>
 </a>
