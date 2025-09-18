@@ -7,6 +7,9 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
     const [error, setError] = useState(false);
     const [events, setEvents] = useState<EVENT[]>([]);
 
+    const [upcomingLimit, setUpcomingLimit] = useState(5);
+    const [pastLimit, setPastLimit] = useState(2);
+
     const currentDate = new Date();
 
     useEffect(() => {
@@ -34,15 +37,20 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
     }, []);
 
 
-    const upcomingEvents = events.filter((event) => new Date(event.startDate) > currentDate);
-    const ongoingEvents = events.filter((event) =>
-        new Date(event.startDate) <= currentDate &&
-        new Date(event.endDate) >= currentDate
+    const upcomingEvents = events
+        .filter((event) => new Date(event.startDate) > currentDate)
+        .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
+
+    const ongoingEvents = events.filter(
+        (event) =>
+            new Date(event.startDate) <= currentDate &&
+            new Date(event.endDate) >= currentDate
     );
-    const completedEvents = events.filter((event) => new Date(event.endDate) < currentDate);
 
+    const completedEvents = events
+        .filter((event) => new Date(event.endDate) < currentDate)
+        .sort((a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime());
 
-    upcomingEvents.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
 
 
     return (
@@ -60,9 +68,25 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
                     <div id="upcoming" className="min-md:mb-10 md:mr-5">
                     <h1 className="text-4xl max-md:hidden">Upcoming Events</h1>
                     {upcomingEvents.length > 0 ? (
-                        upcomingEvents.map((event) => (
-                            <EventEntry key={event.id} event={event} category={"upcoming"} />
-                        ))
+                        <>
+                            {upcomingEvents.slice(0, upcomingLimit).map((event) => (
+                                <EventEntry
+                                    key={event.id}
+                                    event={event}
+                                    category={"upcoming"}
+                                />
+                            ))}
+                            {upcomingLimit < upcomingEvents.length && (
+                                <div className="flex justify-center">
+                                    <button
+                                        onClick={() => setUpcomingLimit(prev => prev + 5)}
+                                        className="mt-3 ml-auto mr-auto px-4 py-2 bg-blue-600 rounded-2xl shadow hover:bg-blue-700 transition duration-200 cursor-pointer"
+                                    >
+                                        Show more upcoming
+                                    </button>
+                                </div>
+                            )}
+                        </>
                         ) : (
                             <p className="text-xl min-md:mt-5 max-md:hidden">
                             No upcoming events!<br />
@@ -87,9 +111,25 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
                         <div id="past" className="min-md:mt-10">
                             <h1 className="text-4xl max-md:hidden">Past Events</h1>
                             {completedEvents.length > 0 ? (
-                                completedEvents.map((event) => (
-                                    <EventEntry key={event.id} event={event} category={"completed"} />
-                                ))
+                                <>
+                                    {completedEvents.slice(0, pastLimit).map((event) => (
+                                        <EventEntry
+                                            key={event.id}
+                                            event={event}
+                                            category={"completed"}
+                                        />
+                                    ))}
+                                    {pastLimit < completedEvents.length && (
+                                        <div className="flex justify-center">
+                                            <button
+                                                onClick={() => setPastLimit(prev => prev + 2)}
+                                                className="mt-3 ml-auto mr-auto px-4 py-2 bg-blue-600 rounded-2xl shadow hover:bg-blue-700 transition duration-200 cursor-pointer"
+                                            >
+                                                Show more upcoming
+                                            </button>
+                                        </div>
+                                    )}
+                                </>
                                 ) : (
                                     <p className="text-xl min-md:mt-5 max-md:hidden">No past events!</p>
                                 )
