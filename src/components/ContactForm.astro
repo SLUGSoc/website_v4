@@ -1,13 +1,13 @@
 ---
-
+const { formURL } = Astro.props;
 ---
 <div class="text-text-body flex items-center justify-center">
-    <form id="contactForm" class="flex flex-col w-3/5" action="https://docs.google.com/forms/d/e/1FAIpQLScdacl-QtMZDcc92JZJMmPHxhmBLK3V2TEntk99sDELAK9oqA/formResponse" method="post" target="hidden_iframe">
+    <form id="contactForm" class="flex flex-col w-3/5" action={formURL} method="post" target="hidden_iframe">
         <label class="text-xl">Enter your email</label>
-        <input type="email" placeholder="Email" required name="entry.593117622" class="normal-case font-sans mb-5 border rounded-lg p-2" />
+        <input type="email" placeholder="Email" required name="entry.794382846" class="normal-case font-sans mb-5 border rounded-lg p-2" />
 
         <label class="text-xl">What are you contacting us about?</label>
-        <select id="reason" class="text-text-body mb-5 border rounded-lg p-2 appearance-none w-full" required name="entry.1690442357">
+        <select id="reason" class="text-text-body mb-5 border rounded-lg p-2 appearance-none w-full" required name="entry.68177860">
             <option value="" selected disabled hidden>Reason for Enquiry</option>
             <option value="Question">Question</option>
             <option value="Promotion">Promotion</option>
@@ -18,7 +18,7 @@
         </select>
 
         <label class="text-xl">Please provide your message here:</label>
-        <textarea id="enquiry" placeholder="Enquiry" required name="entry.432293715" class="normal-case font-sans mb-5 border rounded-lg p-2"></textarea>
+        <textarea id="enquiry" placeholder="Enquiry" required name="entry.104540012" class="normal-case font-sans mb-5 border rounded-lg p-2"></textarea>
 
         <button id="submit" type="submit" class="border p-2 rounded-2xl mt-5 hover:bg-text-body hover:text-bg-main active:text-gray-600 active:bg-bg-offset transition duration-200 cursor-pointer">Submit</button>
         <p id="thankYouMessage" class="text-green-500 text-center mt-2 hidden">Form submitted successfully. Thank you!</p>
