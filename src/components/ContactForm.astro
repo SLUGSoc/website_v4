@@ -28,20 +28,29 @@ const { formURL } = Astro.props;
 
 <script>
     const form = document.getElementById("contactForm") as HTMLFormElement;
-    const submit = document.getElementById("submit") as HTMLFormElement;
+    const submit = document.getElementById("submit") as HTMLButtonElement;
     const iframe = document.querySelector("iframe[name='hidden_iframe']") as HTMLIFrameElement;
     const thankYou = document.getElementById("thankYouMessage") as HTMLElement;
 
+    form.addEventListener("submit", (e) => {
+        if (form.checkValidity()) {
+            submit.disabled = true;
+            submit.classList.add("text-gray-600", "bg-bg-offset", "cursor-not-allowed");
+            submit.classList.remove("hover:bg-text-body", "hover:text-bg-main");
+        }
+    });
+
     iframe.addEventListener("load", () => {
-    submit.classList.add("disabled", "text-gray-600", "bg-bg-offset");
-    submit.classList.remove("hover:bg-text-body", "hover:text-bg-main");
-    thankYou.classList.remove("hidden");
-    form.reset();
-    setTimeout(() => {
-        thankYou.classList.add("hidden");
-        submit.classList.remove("disabled", "text-gray-600", "bg-bg-offset");
-        submit.classList.add("hover:bg-text-body", "hover:text-bg-main");
-    }, 5000);
-});
+        thankYou.classList.remove("hidden");
+        submit.classList.remove("text-gray-600", "bg-bg-offset", "cursor-not-allowed");
+        form.reset();
+
+        setTimeout(() => {
+            thankYou.classList.add("hidden");
+            submit.disabled = false;
+            submit.classList.add("hover:bg-text-body", "hover:text-bg-main");
+        }, 5000);
+    });
 </script>
+
 
