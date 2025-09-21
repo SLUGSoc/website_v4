@@ -82,7 +82,7 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
                                         onClick={() => setUpcomingLimit(prev => prev + 5)}
                                         className="mt-3 ml-auto mr-auto px-4 py-2 bg-blue-600 rounded-2xl shadow hover:bg-blue-700 transition duration-200 cursor-pointer"
                                     >
-                                        Show more upcoming
+                                        Show more upcoming events
                                     </button>
                                 </div>
                             )}
@@ -125,7 +125,7 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
                                                 onClick={() => setPastLimit(prev => prev + 2)}
                                                 className="mt-3 ml-auto mr-auto px-4 py-2 bg-blue-600 rounded-2xl shadow hover:bg-blue-700 transition duration-200 cursor-pointer"
                                             >
-                                                Show more upcoming
+                                                Show more past events
                                             </button>
                                         </div>
                                     )}
