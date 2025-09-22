@@ -1,7 +1,7 @@
 ---
 const { formURL } = Astro.props;
 ---
-<div class="text-text-body flex items-center justify-center">
+<div class="text-text-body flex flex-col items-center justify-center">
     <form id="contactForm" class="flex flex-col w-3/5" action={formURL} method="post" target="hidden_iframe">
         <label class="text-xl">Enter your email</label>
         <input type="email" placeholder="Email" required name="entry.794382846" class="normal-case font-sans mb-5 border rounded-lg p-2" />
@@ -24,6 +24,13 @@ const { formURL } = Astro.props;
         <p id="thankYouMessage" class="text-green-500 text-center mt-2 hidden">Form submitted successfully. Thank you!</p>
     </form>
     <iframe name="hidden_iframe" style="display:none;"></iframe>
+    <div class="flex flex-col w-3/5 justify-start mt-10">
+        <p>This form is submitted through and handled by Google Forms:</p>
+        <div class="flex flex-col">
+            <a href="https://policies.google.com/privacy" class="hover:text-text-subtitle transition duration-200">- Privacy Policy</a>
+            <a href="https://policies.google.com/terms" class="hover:text-text-subtitle transition duration-200">- Terms of Service</a>
+        </div>
+    </div>
 </div> 
 
 <script>
