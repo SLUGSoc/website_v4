@@ -33,14 +33,14 @@ export default function EventEntry({ event, category } : { event: EVENT, categor
                     <h1 className="text-2xl">{event.title}</h1>
                     {event.location && 
                     <div className="flex flex-row items-center">
-                        <h3 className=" text-lg">{event.location}</h3>
-                        <FaLocationDot className="mb-1 ml-1" />
+                        <h3 className="text-lg max-md:text-sm">{event.location}</h3>
+                        <FaLocationDot className="mb-1 ml-1 flex-shrink-0" />
                     </div>    
                     }
                 </div>
                 <p 
                 className={`
-                    border ml-5 min-w-fit min-md:pt-1 w-20 text-center rounded-xl border-transparent
+                    border ml-5 min-w-fit min-md:pt-1 w-20 text-center rounded-xl border-transparent flex-shrink-0
                     ${category.toLowerCase() == "upcoming" ? 'bg-green-500' : ''}
                     ${category == "ongoing" ? 'bg-amber-500' : ''}
                     ${category == "completed" ? 'bg-zinc-600' : ''}
