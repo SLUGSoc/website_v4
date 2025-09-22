@@ -4,27 +4,22 @@ import { Image } from "astro:assets";
 const { committeeMember } = Astro.props
 
 ---
-<div class="flex w-3/5 max-md:w-4/5 h-1/5 mb-5 max-md:flex-col max-md:pb-7 text-text-body bg-bg-offset p-5 rounded-2xl items-center shadow-2xl shadow-zinc-850">
-    <div
-  class="w-[250px] h-[250px] min-md:w-[600px] overflow-hidden"
-  style="clip-path: polygon(0% 50%, 25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%);"
->
-  <img
-    src={`/committees/${committeeMember.id}.png`}
-    alt={committeeMember.data.name}
-    style={{
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      display: 'block'
-    }}
-  />
-</div>
+<div class="flex w-2/5 max-md:w-4/5 mb-5 max-md:flex-col max-md:pb-7 text-text-body bg-bg-offset p-5 rounded-2xl items-center shadow-2xl shadow-zinc-850">
+  <div
+    class="w-[250px] max-md:w-[200px] md:w-[400px] lg:w-[450px] aspect-square overflow-hidden"
+    style="clip-path: polygon(0% 50%, 25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%);"
+  >
+    <img
+      src={`/committees/${committeeMember.id}.png`}
+      alt={committeeMember.data.name}
+      class="w-full h-full object-cover block"
+    />
+  </div>
 
-    <div class="ml-5">
-        <h1 class="text-4xl text-text-title">{committeeMember.data.name}</h1>
-        <h2 class="text-2xl text-text-subtitle">{committeeMember.data.role}</h2>
-        <p class="text-xl mb-2">Favourite Game: {committeeMember.data.favourite_game}</p>
-        <p>{committeeMember.data.bio}</p>
-    </div>
+  <div class="ml-5">
+    <h1 class="text-4xl text-text-title">{committeeMember.data.name}</h1>
+    <h2 class="text-2xl text-text-subtitle">{committeeMember.data.role}</h2>
+    <p class="text-xl mb-2">Favourite Game: {committeeMember.data.favourite_game}</p>
+    <p>{committeeMember.data.bio}</p>
+  </div>
 </div>
