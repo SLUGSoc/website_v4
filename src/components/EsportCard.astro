@@ -5,8 +5,8 @@ const { esport } = Astro.props;
 
 const colour = esport.data.colour;
 ---
-<a href={esport.data.discord} class="w-fit h-fit">
+<a href={esport.data.discord} class="w-fit h-fit text-text-body">
   <div style={`background-color: ${colour}`} class="min-lg:w-[300px] min-lg:h-[300px] max-lg:w-[350px] max-lg:h-[350px] rounded-xs hover:-translate-y-3 hover:shadow-2xl transition duration-150 shadow-lg">
-    <Image src={"/esports/"+esport.id +".png"} alt={(esport.id.split("/")[0]).replace("_", " ") + " Esport Card"} width={225} height={200} class="object-contain w-full h-full p-5" />
+    <Image src={"/esports/"+esport.id +".png"} alt={(esport.id.split("/")[0]).replace(/_/g, " ") + " Esport Card"} width={225} height={200} class="object-contain w-full h-full p-5" />
   </div>
 </a>
