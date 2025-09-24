@@ -1,10 +1,15 @@
 ---
 const currentYear = new Date().getFullYear()
 
+const links = {
+    "discord" : "https://discord.gg/VvUCXCT",
+    "instagram": "https://www.instagram.com/slugsoc/",
+    "twitter": "https://x.com/SLUGSoc"
+}
 ---
-<footer class="flex w-full justify-center items-center bg-text-title mt-auto text-lg">
-    <a class="p-3">Instagram</a>
-    <a class="p-3">Discord</a>
-    <a class="p-3">Twitch</a>
+<footer class="flex w-full justify-center items-center bg-text-title mt-auto text-lg min-md:gap-2 min-md:text-xl text-bg-main">
+    <a class="p-3 hover:text-text-title hover:bg-bg-main transition duration-150" href={links.instagram}>Instagram</a>
+    <a class="p-3 hover:text-text-title hover:bg-bg-main transition duration-150" href={links.discord}>Discord</a>
+    <a class="p-3 hover:text-text-title hover:bg-bg-main transition duration-150" href={links.twitter}>Twitter</a>
     <p class="p-3">SLUGSOC &copy; {currentYear}</p>
 </footer>
