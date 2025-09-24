@@ -1,4 +1,4 @@
 ---
 discord: https://discord.gg/ftpmQXbwxr
-colour: "#195790"
+colour: "#010e2b"
 ---
