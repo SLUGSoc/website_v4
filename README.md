@@ -19,6 +19,13 @@ npx astro dev
 ## Committee / Committee Members
 Please read the guide (NewCommittee.md) on adding committee members in the committees/ folder
 ## Esport
-Please read the guide (Esports.md) on adding esports in the esports/ folder
+Please read the guide (NewEsport.md) on adding esports in the esports/ folder
 ## Events
-This is a WIP, but eventually events will be pulled from a Google Calendar, parsed, and then displayed accordingly
+Events are pulled from the 'SLUGSoc Website' calendar. It will automatically pull the title, timings, location and description of a set event. It will give separate entries for repeating events (This is a good thing!).<br/>
+In order to pull events from the calendar, there exists a Google App Script on the SLUGS Google account that pulls all associated data from the calendar and allows it to be accessed remotely. This data is safe to be revealed to the public, as it is information we will likely advertise anyway (and you shouldn't be putting private events on the SLUGSoc Website calendar anyway). 
+<br/><br/>
+If you *really* need to edit the code, although I see no reason as to why you should want/need to edit it unless Google changes something, you can access the script via the SLUGS Google account (You must log in via MUSE for this) and then navigate to [here](https://developers.google.com/apps-script). The script is written in Javascript, and makes use of the Google 'Calendar' module.
+
+## Social Media
+To update social media, first navigate to Footer.astro in src/components/<br/>
+Now, to update links simply replace the value for the relevant social media (i.e "instagram": "LINK HERE")
