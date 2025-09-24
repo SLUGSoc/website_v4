@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-
 const { committeeMember } = Astro.props
 
 ---
@@ -12,7 +10,10 @@ const { committeeMember } = Astro.props
     <img
       src={`/committees/${committeeMember.id}.png`}
       alt={committeeMember.data.name}
-      class="w-full h-full object-cover block"
+      class="w-full h-full object-cover block bg-text-body"
+      onerror="
+        this.src='/SLUGSController.png';
+      "
     />
   </div>
 
