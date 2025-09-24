@@ -27,5 +27,5 @@ In order to pull events from the calendar, there exists a Google App Script on t
 If you *really* need to edit the code, although I see no reason as to why you should want/need to edit it unless Google changes something, you can access the script via the SLUGS Google account (You must log in via MUSE for this) and then navigate to [here](https://developers.google.com/apps-script). The script is written in Javascript, and makes use of the Google 'Calendar' module.
 
 ## Social Media
-To update social media, first navigate to Footer.astro in src/components/<br/>
+To update social media, first navigate to socialLinks.js in the src/ file<br/>
 Now, to update links simply replace the value for the relevant social media (i.e "instagram": "LINK HERE")
