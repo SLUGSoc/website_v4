@@ -1,12 +1,39 @@
 ---
 import { Image } from "astro:assets";
+import { CiShare1 } from "react-icons/ci";
 
 const { esport } = Astro.props;
 
 const colour = esport.data.colour;
+function isLightColor(hex: string) {
+  hex = hex.replace(/^#/, "");
+
+  if (hex.length === 3) {
+    hex = hex.split("").map(c => c + c).join("");
+  }
+
+  const r = parseInt(hex.substr(0, 2), 16);
+  const g = parseInt(hex.substr(2, 2), 16);
+  const b = parseInt(hex.substr(4, 2), 16);
+
+  const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+  return luminance > 100;
+}
+
+const iconColor = isLightColor(colour) ? "#000000" : "#FFFFFF";
 ---
 <a href={esport.data.discord} class="w-fit h-fit text-text-body">
-  <div style={`background-color: ${colour}`} class="min-lg:w-[300px] min-lg:h-[300px] max-lg:w-[350px] max-lg:h-[350px] rounded-xs hover:-translate-y-3 hover:shadow-2xl transition duration-150 shadow-lg">
-    <Image src={"/esports/"+esport.id +".png"} alt={(esport.id.split("/")[0]).replace(/_/g, " ") + " Esport Card"} width={225} height={200} class="object-contain w-full h-full p-5" />
+  <div 
+    style={`background-color: ${colour}`} 
+    class="min-lg:w-[300px] min-lg:h-[300px] max-lg:w-[350px] max-lg:h-[350px] rounded-xs hover:-translate-y-3 hover:shadow-2xl transition duration-150 shadow-lg relative"
+  >
+    <CiShare1 className="absolute right-2 top-2" size={30} color={iconColor} />
+    <Image 
+      src={`/esports/${esport.id}.png`} 
+      alt={`${esport.id.split("/")[0].replace(/_/g, " ")} Esport Card`} 
+      width={225} 
+      height={200} 
+      class="object-contain w-full h-full p-5" 
+    />
   </div>
 </a>

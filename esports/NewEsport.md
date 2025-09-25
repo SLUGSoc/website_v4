@@ -12,7 +12,7 @@ colour: ""
 ---
 ```
 4. Fill in the fields that you just copied in. Ensure that the discord link contains the *full* link (i.e needs the https://discord.com part).
-> Note: the colour can either be a name 'blue' or a custom hex code '#ffeeff' (Don't forget the hashtag)
+> Note: the colour should be custom hex code '#ffeeff' (Don't forget the hashtag)
 
 Congratulations! You have successfully added a new esport!<br/>
 Don't forget to save your files, rerun the dev server (as explained in the overall README)
