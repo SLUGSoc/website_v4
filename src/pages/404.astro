@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets'
+import Footer from '../components/Footer.astro'
+import Navbar from '../components/Navbar.astro'
+
+import '../styles/global.css' 
+
+import DSBonfire from "../images/dark-souls-bonfire.gif"
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="m-0 flex flex-col min-h-screen">
+    <Navbar />
+    <article class="grow">
+        <div class="flex flex-col items-center justify-center align-middle w-full h-[90dvh] gap-2 text-text-body">
+            <h1 class=" text-6xl">404 - Not Found</h1>
+            <Image src={DSBonfire} alt={"Dark Souls Bonfire"} class="mt-5"/>
+            <p class="mt-2 text-lg">It seems you got lost! Why don't you rest here for a while?</p>
+            <a href={"/"} class="bg-text-title text-bg-main w-3/5 text-center text-lg py-1 rounded-lg hover:bg-bg-offset hover:text-text-title transition duration-150">
+                Home
+            </a>
+        </div>
+    </article>
+    <Footer />
+  </body>
+</html>
