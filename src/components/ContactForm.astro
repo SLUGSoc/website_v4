@@ -48,15 +48,18 @@ const { formURL } = Astro.props;
     });
 
     iframe.addEventListener("load", () => {
-        thankYou.classList.remove("hidden");
-        submit.classList.remove("text-gray-600", "bg-bg-offset", "cursor-not-allowed");
-        form.reset();
+        if (form.checkValidity()) {
 
-        setTimeout(() => {
-            thankYou.classList.add("hidden");
-            submit.disabled = false;
-            submit.classList.add("hover:bg-text-body", "hover:text-bg-main");
-        }, 5000);
+            thankYou.classList.remove("hidden");
+            submit.classList.remove("text-gray-600", "bg-bg-offset", "cursor-not-allowed");
+            form.reset();
+            
+            setTimeout(() => {
+                thankYou.classList.add("hidden");
+                submit.disabled = false;
+                submit.classList.add("hover:bg-text-body", "hover:text-bg-main");
+            }, 5000);
+        }
     });
 </script>
 
