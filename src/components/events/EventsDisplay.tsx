@@ -3,7 +3,7 @@ import type { EVENT } from "../../constants/interfaces";
 import EventEntry from "./EventEntry";
 
 export default function EventsDisplay({ macroURL } : { macroURL: string}) {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [events, setEvents] = useState<EVENT[]>([]);
 
