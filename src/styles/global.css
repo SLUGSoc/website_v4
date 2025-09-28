@@ -13,6 +13,14 @@
     src: url("./BebasNeue-Regular.ttf");
 }
 
+html::-webkit-scrollbar {
+    display: none;
+}
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
 body {
     font-size: 12.0pt;
     font-family: "Bebas Neue";
