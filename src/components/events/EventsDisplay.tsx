@@ -57,7 +57,7 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
         <>
             {loading && 
                 <div className="flex flex-col items-center text-center">
-                    <span className="mt-5 min-md:w-16 min-md:h-16 min-md:border-6 w-12 h-12 border-4 border-text-body border-b-transparent rounded-full inline-block animate-spin"></span>
+                    <span className="mt-5 min-md:w-16 min-md:h-16 min-md:border-6 w-12 h-12 border-4 border-text-body border-b-transparent rounded-full inline-block animate-spin" style={{animationDuration: "0.75s"}}></span>
                 </div>
             }
 
