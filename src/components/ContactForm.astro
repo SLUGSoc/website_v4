@@ -20,8 +20,18 @@ const { formURL } = Astro.props;
         <label class="text-xl">Please provide your message here:</label>
         <textarea id="enquiry" placeholder="Enquiry" required name="entry.104540012" class="normal-case font-sans mb-5 border rounded-lg p-2"></textarea>
 
-        <label class="hidden">Please tick this box: (If you're a bot)</label>
-        <input type="radio" id="antibot" class="hidden" />
+        <div style="position: absolute; left: -9999px; top: 0;">
+            <label for="firstName">Enter your name:</label>
+            <input 
+                type="text" 
+                id="firstName" 
+                name="entry.firstName" 
+                required
+                autocomplete="off" 
+                tabindex="-1"
+            />
+        </div>
+
         <button id="submit" type="submit" class="border p-2 rounded-2xl mt-5 hover:bg-text-body hover:text-bg-main active:text-gray-600 active:bg-bg-offset transition duration-200 cursor-pointer">Submit</button>
         <p id="thankYouMessage" class="text-green-500 text-center mt-2 hidden">Form submitted successfully. Thank you!</p>
     </form>
@@ -40,13 +50,17 @@ const { formURL } = Astro.props;
     const submit = document.getElementById("submit") as HTMLButtonElement;
     const iframe = document.querySelector("iframe[name='hidden_iframe']") as HTMLIFrameElement;
     const thankYou = document.getElementById("thankYouMessage") as HTMLElement;
-    const antiBot = document.getElementById("antibot") as HTMLInputElement;
+    const honeypot = form.querySelector('input[name="entry.firstName"]') as HTMLFormElement;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if (honeypot) honeypot.removeAttribute("required");
+    });
 
     form.addEventListener("submit", (e) => {
-        if (antiBot.checked) {
+        if (honeypot.value.trim() !== "") {
             e.preventDefault();
+            alert("Hmmm, you've entered data somewhere you shouldn't have...");
             form.reset();
-            alert("Submission blocked.");
             return;
         }
 
@@ -54,12 +68,14 @@ const { formURL } = Astro.props;
             submit.disabled = true;
             submit.classList.add("text-gray-600", "bg-bg-offset", "cursor-not-allowed");
             submit.classList.remove("hover:bg-text-body", "hover:text-bg-main");
+            submit.innerText = "Submitting..."
         }
     });
 
     iframe.addEventListener("load", () => {
         if (form.checkValidity()) {
 
+            submit.innerText = "Submit"
             thankYou.classList.remove("hidden");
             submit.classList.remove("text-gray-600", "bg-bg-offset", "cursor-not-allowed");
             form.reset();
@@ -68,6 +84,7 @@ const { formURL } = Astro.props;
                 thankYou.classList.add("hidden");
                 submit.disabled = false;
                 submit.classList.add("hover:bg-text-body", "hover:text-bg-main");
+
             }, 5000);
         }
     });
