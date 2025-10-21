@@ -12,7 +12,8 @@ const { title, subtitle } = Astro.props
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>SLUGSoc {title.toLowerCase() != "slugsoc" && title ? `- ${title}` : ''}</title>
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <title>{title.toLowerCase() != "slugsoc" && title ? `${title} - ` : ''} SLUGSoc</title>
   </head>
   <body class="m-0 flex flex-col min-h-screen">
     <Navbar />
