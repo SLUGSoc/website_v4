@@ -16,6 +16,20 @@ npx astro dev
 ```
 (optionally add --host to make it available on your local network for testing across devices)
 
+## Updating the live site
+Once you have made the changes you need, run the necessary git commands to add and then stage your commits. If you do not know git commands you can run the two below (but be careful as you will be committing every file!)
+```
+git add . 
+```
+```
+git commit -m <your message here>
+```
+Once that is done, and you are happy with your commits, you can type 
+```git push```
+This will send your changes to the github repository (remote code storage), and cloudflare (who host our site) will automatically pick up on this and start building the new site.<br/>
+Wait a couple minutes then visit the live site [here](https://slugsoc.co.uk) and check out your changes.<br/> Any problems please consult the troubleshooting guide in the google drive.
+
+# Guides
 ## Committee / Committee Members
 Please read the guide (NewCommittee.md) on adding committee members in the committees/ folder
 ## Esports
