@@ -1,4 +1,5 @@
 > Note: if you rename this file you MUST change the name of the file to ignore within the src/pages/esports.astro
+
 In order to add an esport, follow the steps below:
 
 1. Create a new folder in the format of: `<esport_name>` (i.e minecraft/) - ensuring that the text is lowercaser, and that any spaces (i.e overwatch 2) are replaced with underscores _ (overwatch_2)
