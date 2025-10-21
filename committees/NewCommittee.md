@@ -20,4 +20,4 @@ importance:
 > Note: If two committee members have the same importance (i.e two tech officers have '4'), it will order alphabetically by first name
 
 Congratulations! You have successfully added a new committee/committee member!<br/>
-Don't forget to save your files, rerun the dev server (as explained in the overall README)
+Don't forget to save your files, rerun the dev server (as explained in the overall README) and make sure everything looks good before you push!
