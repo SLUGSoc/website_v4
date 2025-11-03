@@ -1,5 +1,6 @@
 import { FaLocationDot } from "react-icons/fa6";
 import type { EVENT } from "../../constants/interfaces";
+import { stripHtml } from "string-strip-html";
 
 export default function EventEntry({ event, category } : { event: EVENT, category: string }) {
 
@@ -28,9 +29,9 @@ export default function EventEntry({ event, category } : { event: EVENT, categor
 
     return (
         <div className="bg-bg-offset border-2 border-bg-offset rounded-xl p-5 mt-5">
-            <div className="flex justify-between items-center mb-2">
+            <div className="flex justify-between items-center mb-2 w-full min-w">
                 <div>
-                    <h1 className="text-2xl">{event.title}</h1>
+                    <h1 className="text-2xl break-all">{event.title}</h1>
                     {event.location && 
                     <div className="flex flex-row items-center">
                         <h3 className="text-lg max-md:text-sm">{event.location}</h3>
@@ -48,7 +49,9 @@ export default function EventEntry({ event, category } : { event: EVENT, categor
                 `}>{category}</p>
             </div>
             <p className="text-lg">{formatDates(event)}</p>
-            <p>{event.description}</p>
+            {event.description && 
+                <p className="break-all">{stripHtml(event.description).result}</p>
+            }
         </div>
     )
 }
