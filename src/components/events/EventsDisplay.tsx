@@ -64,7 +64,7 @@ export default function EventsDisplay({ macroURL } : { macroURL: string}) {
             {!loading && error && <p className="text-3xl text-red-400">Error loading Events - Please try again</p>}
 
             {!loading && !error && 
-                <div className="text-white flex xl:w-3/5 min-2xl:w-2/5 justify-between max-md:flex-col max-lg:w-4/5">
+                <div className="text-white flex xl:w-4/5 min-2xl:w-3/5 justify-between max-md:flex-col max-lg:w-4/5">
                     <div id="upcoming" className="min-md:mb-10 md:mr-5">
                     <h1 className="text-4xl max-md:hidden">Upcoming Events</h1>
                     {upcomingEvents.length > 0 ? (
