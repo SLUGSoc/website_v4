@@ -1,8 +1,11 @@
 ---
 const { formURL } = Astro.props;
+
+const num1: number = Math.floor(Math.random() * (30 - 1)) + 1;
+const num2: number = Math.floor(Math.random() * (30 - 1)) + 1;
 ---
 <div class="text-text-body flex flex-col items-center justify-center">
-    <form id="contactForm" class="flex flex-col w-2/5 max-md:w-3/5" action={formURL} method="post" target="hidden_iframe">
+    <form id="contactForm" class="flex flex-col w-2/5 max-md:w-3/5" action={formURL} method="post" target="hidden_iframe" data-num1={num1} data-num2={num2}>
         <label class="text-xl">Enter your email</label>
         <input type="email" placeholder="Email" required name="entry.794382846" class="normal-case font-sans mb-5 border rounded-lg p-2" />
 
@@ -32,6 +35,10 @@ const { formURL } = Astro.props;
             />
         </div>
 
+        <label class="text-xl">Please answer this to prove your real: {num1} + {num2} = ?</label>
+        <input id="numCheck" type="number" required name="numCheck" class="normal-case font-sans mb-5 border rounded-lg p-2"></input>
+
+
         <button id="submit" type="submit" class="border p-2 rounded-2xl mt-5 hover:bg-text-body hover:text-bg-main active:text-gray-600 active:bg-bg-offset transition duration-200 cursor-pointer">Submit</button>
         <p id="thankYouMessage" class="text-green-500 text-center mt-2 hidden">Form submitted successfully. Thank you!</p>
     </form>
@@ -52,11 +59,18 @@ const { formURL } = Astro.props;
     const thankYou = document.getElementById("thankYouMessage") as HTMLElement;
     const honeypot = form.querySelector('input[name="entry.firstName"]') as HTMLFormElement;
 
+    const numCheck = document.getElementById('numCheck') as HTMLFormElement;
+    const num1 = Number(form.dataset.num1);
+    const num2 = Number(form.dataset.num2);
+
     document.addEventListener("DOMContentLoaded", () => {
         if (honeypot) honeypot.removeAttribute("required");
     });
 
     form.addEventListener("submit", (e) => {
+
+        if (numCheck.value != (num1 + num2)) { return; }
+
         if (honeypot.value.trim() !== "") {
             e.preventDefault();
             alert("Hmmm, you've entered data somewhere you shouldn't have...");
