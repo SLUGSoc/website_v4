@@ -43,3 +43,8 @@ If you *really* need to edit the code (hopefully you don't need to unless Google
 ## Social Media
 To update social media, first navigate to socialLinks.js in the src/ file<br/>
 Now, to update links simply replace the value for the relevant social media (i.e "instagram": "LINK HERE")
+
+## Extra notes
+This website was developed on macOS - an OS with a case insensitive file system. As a result, you may encounter some issues if you're making updates to the website on a machine with a case-sensitive file system. I (Owen/Towster15) had issues on Debian 13, for example.
+
+I would encourage you to add new committee members as lower-case names and folders, as with the 2026/27 committee, but Title Case should also work.
