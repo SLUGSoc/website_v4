@@ -2,6 +2,9 @@
 Congratulations - you are (probably) a new committee member of SLUGSOC (and/or a tech officer)!
 
 If this is your first time reading this please start below:
+
+
+> Note (24/07/2026): This site was developed and tested on macOS only, therefore script compatibility with Windows, Linux, or other operating systems cannot be guaranteed.
 # First Time
 ## Running the server locally (for development / testing)
 Ensure you have [NodeJS/NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [AstroJS](https://astro.build/) installed. <br/>
