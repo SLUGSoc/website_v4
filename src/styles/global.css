@@ -13,6 +13,10 @@
     src: url("./BebasNeue-Regular.ttf");
 }
 
+.max-1500px {
+    max-width: 1000px;
+}
+
 html::-webkit-scrollbar {
     display: none;
 }

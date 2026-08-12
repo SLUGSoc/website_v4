@@ -7,7 +7,7 @@ let committees = await getCollection("committees")
 let committeeYear;
 let date =  new Date();
 
-if (date.getMonth() >= 8) { // This is '8' for September, as JS Date starts at '0' for January
+if (date.getMonth() >= 6) { // This is '6' for July, as JS Date starts at '0' for January
   committeeYear = date.getFullYear();
 } else {
   committeeYear = date.getFullYear() - 1;
@@ -23,7 +23,13 @@ committees.sort((a, b) => a.data.importance - b.data.importance);
 
 ---
 
-<Layout title="Committee" subtitle={"Your " + committeeYear + " Committee"}>
+<!--
+This is not very nice and I'm almost sorry for it - doing it in the logic further up causes issues
+with detecting the folder and I can't be bothered to deal with that. -Towster15
+-->
+<Layout title="Committee" subtitle={
+  "Your " + committeeYear + "/" + (Number(committeeYear) + 1).toString().slice(-2) + " Committee"
+}>
   <div class="flex justify-center flex-col items-center">
     {committees.length > 0 ? 
       committees.map(committeeMember => (<CommitteeCard committeeMember={committeeMember} />)) 

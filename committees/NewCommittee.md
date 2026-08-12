@@ -21,3 +21,6 @@ importance:
 
 Congratulations! You have successfully added a new committee/committee member!<br/>
 Don't forget to save your files, rerun the dev server (as explained in the overall README) and make sure everything looks good before you push!
+
+Additional notes:
+- If people have a colon in their bio, you can add unicode character U+200B (zero width space) after it to stop the markdown interpreter from throwing errors.
