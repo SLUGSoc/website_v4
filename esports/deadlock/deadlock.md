@@ -1,4 +1,4 @@
 ---
-discord: https://discord.gg/2Bxkw8pVP7
-colour: "#0f1922"
+discord: https://discord.ggemUyvz5evs
+colour: "#222021"
 ---
