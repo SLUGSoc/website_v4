@@ -30,7 +30,7 @@ with detecting the folder and I can't be bothered to deal with that. -Towster15
 <Layout title="Committee" subtitle={
   "Your " + committeeYear + "/" + (Number(committeeYear) + 1).toString().slice(-2) + " Committee"
 }>
-  <div class="flex justify-center flex-col items-center">
+  <div class="flex justify-center flex-col items-center font-subtext">
     {committees.length > 0 ? 
       committees.map(committeeMember => (<CommitteeCard committeeMember={committeeMember} />)) 
       : 
